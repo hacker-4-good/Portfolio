@@ -103,7 +103,7 @@ with st.container():
         if st.button("Submit"):
             st.balloons()
             import pymongo as mongo
-            URI = mongo.MongoClient("mongodb://localhost:27017")
+            URI = mongo.MongoClient("mongodb+srv://Mayank:mayank580@user.f0aak7o.mongodb.net/test")
             db = URI["Contact_Information"]
             contact = db["Contact"]
             db.contact.insert_one({'Name':name, 'Email':email, 'Message':message})
