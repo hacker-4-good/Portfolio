@@ -89,3 +89,21 @@ with st.container():
              Mediapipe.''')
     with left_internship:
         st.image("Portfolio/Images/intern.png", width = 300)
+
+
+
+with st.container():
+    st.write("---")
+    st.header("Contact Me")
+    left_contact, right_contact = st.columns(2)
+    with left_contact:
+        name = st.text_input("Name", placeholder="Enter your name")
+        email = st.text_input("Email", placeholder="Enter your email")
+        message = st.text_area("Message", placeholder="Anything to share :)")
+        if st.button("Submit"):
+            st.balloons()
+            import pymongo as mongo
+            URI = mongo.MongoClient("mongodb://localhost:27017")
+            db = URI["Contact_Information"]
+            contact = db["Contact"]
+            db.contact.insert_one({'Name':name, 'Email':email, 'Message':message})
